@@ -1,23 +1,17 @@
 # INKLINGS · The Nest
 
-A tiny living watercolor world. An original, mobile-first Tamagotchi-style creature-care experience with no levels or punishment.
+A mobile-first watercolor creature-care game. No levels, no deaths, no daily punishment. The opening artwork is a hand-painted scene with interactive **Play**, **Journal** and **Settings** regions. Feed, pet, play with and rest with Pip and Momo. Progress saves to local browser storage.
 
-## Play
+## Run
 
-Use the painted **Play**, **Journal**, and **Settings** controls on the opening illustration. In the nest, tap an Inky to pet it or use **Feed**, **Play**, **Rest**. Your interactions are saved locally to this browser. Little sounds and reduced motion can be adjusted in Settings.
+`python -m http.server 8080`, then open `http://localhost:8080/`.
 
-## Running locally
+## GitHub Pages
 
-`python -m http.server 8080` then browse to `http://localhost:8080`. No build step or server code.
+In repository Settings → Pages, deploy from `main` and `/ (root)`. Paths are relative for the `/inklings/` subpath. A successful push does not guarantee Pages is active.
 
-## Hosting
+## Quality and current limitations
 
-Set GitHub Pages to deploy from `main`, directory `/ (root)`. All paths are relative to support `https://itsnotalwin.github.io/inklings/`.
+Watercolor title-screen layout locally verified in Chromium at 320×568, 390×844, 430×932 and 1280×900 with title controls and care actions tested. The production Pages URL is not yet verified here. Pip and Momo currently animate/react in place; autonomous movement needs a future art and code pass. Live screenshot publication remains pending.
 
-## Status
-
-First playable watercolor vertical slice with illustrated entry screen, responsive nest, pet/feed/play/rest, journal, local saves, and mobile controls. Inkies currently react and breathe in place; true autonomous movement is planned.
-
-## Design and source
-
-Read `PROJECT.md`, `AGENTS.md` and folder `CONTEXT.md`/`DESIGN.md` before extending. The illustrations are generated specifically for this concept and need an additional consistent animation/cleanup pass before final production.
+Before editing, read `PROJECT.md`, `AGENTS.md`, and affected folder `CONTEXT.md`/`DESIGN.md`.
