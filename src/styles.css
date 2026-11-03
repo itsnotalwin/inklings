@@ -1,0 +1,82 @@
+:root { color-scheme: light; --ink:#3c3430; --wine:#8d5052; --paper:#e9ddc9; --soft:#847569; font-family: Georgia, 'Times New Roman', serif; }
+* {box-sizing:border-box}
+html {min-height:100%; background:var(--paper)}
+body {margin:0; color:var(--ink); min-height:100svh; background:linear-gradient(180deg,rgba(243,233,215,.53),rgba(228,210,185,.22)),url('../art/paper.jpg') center / 500px repeat; overscroll-behavior-y:contain}
+button {font:inherit; color:inherit; -webkit-tap-highlight-color: transparent; cursor:pointer}
+button:focus-visible,input:focus-visible {outline:3px solid var(--wine);outline-offset:4px}
+.page {min-height:100svh; padding: max(12px,env(safe-area-inset-top)) max(10px,env(safe-area-inset-right)) max(12px,env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-left)); max-width:600px; margin:auto; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:clamp(6px,1.3vh,14px)}
+.masthead{display:flex;align-items:center;justify-content:space-between;width:min(100%,480px);padding:3px 8px 4px 14px;min-height:70px}
+.wordmark{display:flex;flex-direction:column;gap:2px;transform:rotate(-1.5deg)}
+.wordmark-main{font-weight:600;letter-spacing:.16em;font-size:clamp(22px,6vw,31px);line-height:1.05;text-shadow:.5px .75px 0 #baa995}
+.wordmark-sub{font-size:10px;letter-spacing:.16em;text-transform:lowercase;color:#776b62}
+.journal-button{display:flex;align-items:center;flex-direction:column;gap:0;border:0;background:transparent;padding:3px 9px;transform:rotate(4deg)}
+.journal-button svg{width:33px;height:33px;fill:none;stroke:#554640;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.journal-button span{font-size:10px;letter-spacing:.08em}
+.painting-wrap{width:min(100%,475px);padding:0 2px}
+.painting{position:relative;isolation:isolate;aspect-ratio:830/1024;width:100%;overflow:hidden;background:#d6bda1;touch-action:manipulation;box-shadow:0 0 0 1px rgba(76,53,35,.1),0 8px 35px rgba(85,58,38,.08);border-radius: 46% 48% 8% 9% / 2% 2% 1% 1%; mask-image:linear-gradient(to bottom,transparent 0%,black 1.5%,black 97%,transparent 100%);}
+.backdrop {position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;user-select:none}
+.dusk{position:absolute;inset:0;pointer-events:none;background:linear-gradient(145deg,rgba(18,23,46,.26),rgba(32,30,48,.48));mix-blend-mode:multiply;opacity:0;transition:opacity 3s ease}
+.painting.is-night .dusk{opacity:.68}
+.light-halo{position:absolute;left:0;top:12%;width:40%;height:35%;background:radial-gradient(ellipse,rgba(255,215,153,.44),transparent 70%);filter:blur(10px);mix-blend-mode:screen;pointer-events:none;animation:lantern 5s ease-in-out infinite alternate}
+.inkie{position:absolute;border:0;padding:0;background:transparent;appearance:none;touch-action:manipulation;transform-origin:50% 83%;will-change:transform;filter:drop-shadow(0 1px 2px rgba(43,36,30,.12))}
+.inkie img{display:block;width:100%;height:auto;pointer-events:none;user-select:none}
+.inkie-pip{width:36.4%;left:5.1%;top:48.7%;animation:inhale 4s ease-in-out infinite}
+.inkie-momo{width:38.2%;left:52.2%;top:37.5%;animation:inhale 5.5s ease-in-out -1.5s infinite}
+.inkie.petted {animation:wiggle .76s ease-in-out 1}
+.inkie.is-eating{animation:nom 1.3s ease-in-out 1}
+.inkie.is-playing{animation:wiggle .75s ease-in-out 2}
+.inkie.is-sleeping{animation:inhale 6s ease-in-out infinite;filter:brightness(.98)}
+.bowl-hotspot{position:absolute;left:46%;top:71%;width:36%;height:17%;border:0;background:transparent;border-radius:50%;transform:rotate(-4deg)}
+.paint-animations {position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.particle{position:absolute;top:var(--y);left:var(--x);font-family:Georgia,serif;color:var(--wine);font-size:var(--size,24px);opacity:0;animation:float-away 2.1s ease-out forwards;filter:drop-shadow(0 1px 2px #7a504555)}
+.paper-whisper {position:absolute;left:8%;right:8%;bottom:2%;text-align:center;color:#463b34;font-size:clamp(11px,2.75vw,14px);font-style:italic;letter-spacing:.01em;text-shadow:0 1px 2px #e5c8ac,0 -1px 2px #e5c8ac;pointer-events:none;min-height:1.3em;transition:opacity .6s ease}
+.actions{display:flex;justify-content:center;gap:clamp(20px,8vw,52px);width:100%;padding-top:6px}
+.action{display:flex;flex-direction:column;align-items:center;gap:0;min-width:66px;min-height:63px;border:0;background:transparent;transition:transform .2s ease}
+.action:active{transform:scale(.91)}
+.action-icon{display:grid;place-items:center;width:49px;height:43px;font-size:34px;font-weight:400;color:#5d4c43;line-height:1;text-shadow:1px 2px 1px rgba(67,50,35,.12);transform:rotate(-4deg)}
+.action:nth-child(2) .action-icon{font-size:33px;color:#9b6868;transform:rotate(10deg)}
+.action:nth-child(3) .action-icon{font-size:35px}
+.action>span:last-child{font-size:13px;font-style:italic;letter-spacing:.025em;color:#5c504a}
+.footnote{width:min(100%,480px);display:flex;align-items:center;justify-content:space-between;padding:0 19px 2px;font-size:11px;font-style:italic;color:#7c6d60;min-height:25px}
+.little-stamp{font-size:15px;font-style:normal;border:1px solid #a25350;color:#a25350;transform:rotate(-8deg);padding:1px;line-height:1}
+.journal{border:0;padding:0;max-width:min(92vw,450px);width:100%;max-height:min(90svh,810px);background:transparent;color:var(--ink);overflow:auto;box-shadow:0 22px 90px #30271d99}
+.journal::backdrop{background:rgba(27,24,22,.65);backdrop-filter:blur(3px)}
+.journal-sheet{background:linear-gradient(160deg,rgba(255,255,255,.08),transparent),url('../art/paper.jpg') center/500px, #e8d8bd;padding:28px clamp(21px,5vw,36px) 25px;position:relative;border:1px solid #ad9881}
+.journal-close{position:absolute;right:15px;top:9px;background:none;border:0;font-size:29px;font-weight:400;min-width:40px;min-height:40px}
+.journal-kicker{font-size:10px;text-transform:uppercase;letter-spacing:.21em;color:#8f6c66;margin:8px 0 25px}
+.journal h2{font-size:clamp(29px,7vw,39px);font-weight:normal;margin:0 0 15px;line-height:1.1}
+.journal-intro{font-size:16px;line-height:1.6;font-style:italic;color:#63564d}
+.journal-rule{border-top:1px solid rgba(99,81,67,.42);margin:22px 0}
+.journal-entry{display:flex;gap:16px;margin:16px 0 24px}
+.entry-mark{font-size:28px;color:var(--wine);line-height:1.1}
+.journal h3{font-size:23px;font-weight:normal;margin:0 0 7px}
+.journal h3 small{font-size:12px;color:#75685a;font-style:italic;margin-left:5px}
+.journal-entry p{margin:0;font-size:14px;line-height:1.55;color:#675b50}
+.journal-record{font-size:13px;line-height:1.6}
+.sound-toggle{display:flex;align-items:center;gap:10px;font-size:14px;min-height:44px}
+.sound-toggle input{accent-color:#925b5b;width:18px;height:18px}
+.journal-note{font-size:11px;line-height:1.6;color:#867468;font-style:italic}
+@keyframes inhale {0%,100%{transform:translateY(0) scale(1,1)}50%{transform:translateY(-2px) scale(1.004,1.014)}}
+@keyframes wiggle{0%,100%{transform:rotate(0) scale(1)}20%{transform:rotate(-4deg) scale(1.025)}48%{transform:rotate(5deg) scale(1.025)}75%{transform:rotate(-3deg)}}
+@keyframes nom{0%,100%{transform:scale(1)}25%,68%{transform:scale(1.04,.97)}45%,85%{transform:scale(.985,1.015)}}
+@keyframes lantern {from{opacity:.63}to{opacity:1}}
+@keyframes float-away{0%{opacity:0;transform:translate(-50%,0) scale(.4)}18%{opacity:.86}80%{opacity:.7}100%{opacity:0;transform:translate(calc(-50% + var(--drift)), -90px) rotate(var(--rot)) scale(1.14)}}
+@media (max-height:690px){.page{gap:2px;padding-top:max(3px,env(safe-area-inset-top));padding-bottom:env(safe-area-inset-bottom)}.masthead{min-height:55px}.painting-wrap{width:min(100%,calc((100svh - 192px)*830/1024),475px)}.actions{padding-top:1px}.footnote{min-height:18px}}
+@media (min-width:750px){.page{padding-top:26px;padding-bottom:24px}.painting-wrap{width:min(100%,440px)}.actions{gap:60px}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+
+/* Illustrated storybook cover: real painted buttons are accessible hotspots. */
+[hidden]{display:none!important}
+.front-cover{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:max(8px,env(safe-area-inset-top)) max(6px,env(safe-area-inset-right)) max(12px,env(safe-area-inset-bottom)) max(6px,env(safe-area-inset-left));background:radial-gradient(ellipse at center,transparent 40%,rgba(83,59,42,.16) 100%)}
+.front-art{position:relative;width:min(calc(100vw - 12px),calc((100svh - 52px)*630/948),620px);aspect-ratio:630/948;overflow:hidden;border-radius:18px;box-shadow:0 6px 45px rgba(44,28,19,.2);isolation:isolate}
+.front-art>img{display:block;width:100%;height:100%;object-fit:fill;user-select:none;-webkit-user-drag:none}
+.cover-hotspot{position:absolute;top:81%;height:14%;width:25%;background:transparent;border:0;border-radius:35%;touch-action:manipulation}
+.cover-hotspot:active{background:rgba(255,248,228,.13);transform:scale(.96)}
+.cover-play{left:8%}.cover-journal{left:37.5%}.cover-settings{left:68%}
+.cover-hint{margin:0;font-size:clamp(10px,2.7vw,12px);font-style:italic;letter-spacing:.1em;color:#76645b;text-align:center}
+.home-control{border:0;background:transparent;font-size:33px;padding:0 6px 5px;color:#655246;align-self:center;min-width:44px;min-height:44px}
+.sound-toggle{margin-bottom:13px}
+@media (max-height:640px){.front-cover{gap:2px}.cover-hint{font-size:10px}.front-art{width:min(calc(100vw - 8px),calc((100svh - 26px)*630/948),620px)}}
+@media (min-width:720px){.front-cover{background:radial-gradient(ellipse at center,rgba(230,214,185,.2),rgba(65,48,36,.17)),url('../art/paper.jpg') center/500px repeat}}
+
+.less-motion *, .less-motion *::before, .less-motion *::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
