@@ -1,3 +1,5 @@
-# Living interface
+# Presentation and interactions
 
-The UI begins as one painted illustration, not a typical menu. Play, Journal and Settings are transparent HTML controls over painted buttons. Inside, interactive cutout Inkies sit over a painted background with small care controls. Parchment textures, smoky charcoal, modest rose accents, breathing and subtle interactions define the atmosphere. The real screenshot is pending remote commit; do not treat generated concept images as proof of implementation. Review 390×844 portrait and 320×568 small phone views, and reduced motion.
+The title uses the real watercolor image, with responsive `.front-poster` and accessible transparent Play, Journal and Settings hotspots. Never stretch faces or create vector-style buttons. `index.html` loads `src/game.js` at the end of body; preserve that module reference. The living nest supports feed, play, rest, petting, two illustrated characters and browser-local persistence.
+
+Smoke-tested in local Chromium at 320, 390, 430px wide and 1280px desktop, using the exact HTML, CSS, JS and assets embedded because the environment blocks local HTTP navigation. Genuine mobile screenshots were generated locally. Remote screenshot publication and live-site confirmation remain pending.
