@@ -65,18 +65,34 @@ button:focus-visible,input:focus-visible {outline:3px solid var(--wine);outline-
 @media (min-width:750px){.page{padding-top:26px;padding-bottom:24px}.painting-wrap{width:min(100%,440px)}.actions{gap:60px}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
 
-/* Illustrated storybook cover: real painted buttons are accessible hotspots. */
+/* Illustrated opening screen: the reference painting itself is the interface.
+   The poster preserves the exact proportions of the Inkies and painted buttons. */
 [hidden]{display:none!important}
-.front-cover{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:max(8px,env(safe-area-inset-top)) max(6px,env(safe-area-inset-right)) max(12px,env(safe-area-inset-bottom)) max(6px,env(safe-area-inset-left));background:radial-gradient(ellipse at center,transparent 40%,rgba(83,59,42,.16) 100%)}
-.front-art{position:relative;width:min(calc(100vw - 12px),calc((100svh - 52px)*630/948),620px);aspect-ratio:630/948;overflow:hidden;border-radius:18px;box-shadow:0 6px 45px rgba(44,28,19,.2);isolation:isolate}
-.front-art>img{display:block;width:100%;height:100%;object-fit:fill;user-select:none;-webkit-user-drag:none}
-.cover-hotspot{position:absolute;top:81%;height:14%;width:25%;background:transparent;border:0;border-radius:35%;touch-action:manipulation}
-.cover-hotspot:active{background:rgba(255,248,228,.13);transform:scale(.96)}
-.cover-play{left:8%}.cover-journal{left:37.5%}.cover-settings{left:68%}
-.cover-hint{margin:0;font-size:clamp(10px,2.7vw,12px);font-style:italic;letter-spacing:.1em;color:#76645b;text-align:center}
-.home-control{border:0;background:transparent;font-size:33px;padding:0 6px 5px;color:#655246;align-self:center;min-width:44px;min-height:44px}
-.sound-toggle{margin-bottom:13px}
-@media (max-height:640px){.front-cover{gap:2px}.cover-hint{font-size:10px}.front-art{width:min(calc(100vw - 8px),calc((100svh - 26px)*630/948),620px)}}
-@media (min-width:720px){.front-cover{background:radial-gradient(ellipse at center,rgba(230,214,185,.2),rgba(65,48,36,.17)),url('../art/paper.jpg') center/500px repeat}}
+.front-cover{position:relative;isolation:isolate;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:max(10px,env(safe-area-inset-top)) 8px max(10px,env(safe-area-inset-bottom));overflow:hidden;background:#beab94}
+.front-cover::before{content:"";position:absolute;inset:-45px;z-index:-2;background:url('../art/splash.jpg') center/cover no-repeat;filter:blur(26px) saturate(.75);transform:scale(1.08);opacity:.76;pointer-events:none}
+.front-cover::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(58,37,27,.18),rgba(255,241,219,.05) 42%,rgba(64,43,35,.12));pointer-events:none}
+.front-art{position:relative;flex:none;width:min(calc(100vw - 16px),calc((100svh - 36px)*630/948),650px);aspect-ratio:630/948;overflow:hidden;border-radius:18px;isolation:isolate;box-shadow:0 8px 42px rgba(39,29,22,.26)}
+.front-poster{position:absolute;inset:0;aspect-ratio:630/948}
+.front-poster>img{display:block;width:100%;height:100%;object-fit:fill;user-select:none;-webkit-user-drag:none;pointer-events:none}
+.cover-hotspot{position:absolute;top:80.7%;height:15%;width:26%;background:transparent;border:0;border-radius:28%;touch-action:manipulation;z-index:2}
+.cover-hotspot:active{background:rgba(255,248,228,.16);transform:scale(.97)}
+.cover-hotspot:focus-visible{outline:3px solid #7e393b;outline-offset:-4px;background:rgba(255,241,212,.12)}
+.cover-play{left:6.3%}.cover-journal{left:37.2%}.cover-settings{left:67.8%}
+.cover-hint{margin:0;color:#44352d;text-shadow:0 1px 2px #f1debe;font-size:clamp(10px,2.65vw,12px);font-style:italic;letter-spacing:.08em;text-align:center}
+.home-control{border:0;background:transparent;font-size:32px;padding:0 6px 5px;color:#655246;min-width:44px;min-height:44px}
+@media(max-width:620px){
+  .front-cover{padding:0;gap:0}
+  .front-art{width:100vw;height:100svh;max-width:none;aspect-ratio:auto;border-radius:0;box-shadow:none}
+  .front-poster{inset:auto;left:50%;top:50%;height:auto;width:min(116vw,calc(100svh*630/948));transform:translate(-50%,-50%);aspect-ratio:630/948;mask-image:linear-gradient(to bottom,transparent 0%,#000 3%,#000 97%,transparent 100%)}
+  .cover-hint{display:none}
+}
+@media(max-height:560px) and (min-width:621px){.front-art{width:min(calc(100vw - 20px),calc((100svh - 14px)*630/948),650px)}.cover-hint{display:none}}
+@media(min-width:900px){.front-cover::before{filter:blur(36px) saturate(.7)}.front-art{box-shadow:0 16px 60px rgba(39,29,22,.32)}}
+/* The nest remains an illustration, not a conventional HUD card. */
+.painting{border-radius:16px;mask-image:linear-gradient(to bottom,transparent 0%,black 1.5%,black 97%,transparent 100%)}
+.actions .action{min-width:82px;min-height:70px;border-radius:50%;background:radial-gradient(ellipse,rgba(244,229,201,.77),rgba(243,227,195,.24) 58%,transparent 74%)}
+.actions .action:focus-visible{outline:2px solid var(--wine)}
+.masthead{min-height:60px}
+@media(max-width:620px){.page{gap:clamp(5px,1.6svh,13px);justify-content:center;min-height:100svh}.painting-wrap{width:min(100%,475px)}.painting{box-shadow:none}.action{min-width:76px}}
 
 .less-motion *, .less-motion *::before, .less-motion *::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
